@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Netgo_Stripe>
+            <version>0.1.0</version>
+        </Netgo_Stripe>
+    </modules>
+    <frontend>
+        <routers>
+            <stripe>
+                <use>standard</use>
+                <args>
+                    <module>Netgo_Stripe</module>
+                    <frontName>stripe</frontName>
+                </args>
+            </stripe>
+        </routers>
+        <layout>
+            <updates>
+                <stripe>
+                    <file>stripe.xml</file>
+                </stripe>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<stripe>
+				<use>admin</use>
+				<args>
+					<module>Netgo_Stripe</module>
+					<frontName>stripe</frontName>
+				</args>
+			</stripe>
+        </routers>
+    </admin>
+    <adminhtml>
+		
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Netgo_Stripe>
+							<title>Stripe Payment Module</title>
+							<sort_order>10</sort_order>
+						</Netgo_Stripe>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<stripe>
+					<file>stripe.xml</file>
+				</stripe>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <stripe>
+                <class>Netgo_Stripe_Model</class>
+                <resourceModel>stripe_mysql4</resourceModel>
+            </stripe>
+            <stripe_mysql4>
+                <class>Netgo_Stripe_Model_Mysql4</class>
+                <entities>
+                    <stripe>
+                        <table>stripe</table>
+                    </stripe>
+                </entities>
+            </stripe_mysql4>
+        </models>
+        <resources>
+            <stripe_setup>
+                <setup>
+                    <module>Netgo_Stripe</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </stripe_setup>
+            <stripe_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </stripe_write>
+            <stripe_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </stripe_read>
+        </resources>
+        <blocks>
+            <stripe>
+                <class>Netgo_Stripe_Block</class>
+            </stripe>
+        </blocks>
+        <helpers>
+            <stripe>
+                <class>Netgo_Stripe_Helper</class>
+            </stripe>
+        </helpers>
+    </global>
+    
+     <default>
+        <payment>
+            <stripe>
+                <active>1</active>
+                <model>stripe/stripe</model>
+                <order_status>processing</order_status>
+				<cctypes>AE,VI,MC,DI,SS</cctypes>
+				<!--
+                 * this should be authorize or authorize_capture
+                 * you can probably guess that authorize just
+                 * authorizes the payment but authorize_capture
+                 * processes it as well
+				-->
+				<payment_action>authorize_capture</payment_action>
+				<!--
+                 * this field is used to say whether you only
+                 * want this method to be used for certain
+                 * countries but that is not covered by this
+                 * tutorial
+				-->
+				<allowspecific>0</allowspecific>
+                <title>Stripe Payment Method</title>
+            </stripe>
+         </payment>
+    </default>
+    
+</config>

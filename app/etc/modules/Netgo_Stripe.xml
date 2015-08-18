@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Netgo_Stripe>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Netgo_Stripe>
+    </modules>
+</config> 
