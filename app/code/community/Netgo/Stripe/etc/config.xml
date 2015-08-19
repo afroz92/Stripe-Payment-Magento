@@ -119,11 +119,12 @@
     
      <default>
         <payment>
-            <stripe>
+            <netgo_stripe>
                 <active>1</active>
                 <model>stripe/stripe</model>
+				<title>Stripe Payment Method</title>
                 <order_status>processing</order_status>
-				<cctypes>AE,VI,MC,DI,SS</cctypes>
+				<cctypes>AE,VI,MC,DI,JCB</cctypes>
 				<!--
                  * this should be authorize or authorize_capture
                  * you can probably guess that authorize just
@@ -137,9 +138,11 @@
                  * countries but that is not covered by this
                  * tutorial
 				-->
+				<useccv>1</useccv>
+				<min_order_total>0.50</min_order_total>
 				<allowspecific>0</allowspecific>
                 <title>Stripe Payment Method</title>
-            </stripe>
+            </netgo_stripe>
          </payment>
     </default>
     
