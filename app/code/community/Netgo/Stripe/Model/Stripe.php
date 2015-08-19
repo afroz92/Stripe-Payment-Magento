@@ -1,14 +1,18 @@
 <?php
  /**
- * @package    Netgo_Stripe
- * @author     afroz alam(afroz92@gmail.com) 
- * @date       16/08/2015
+ * Netgo_Stripe module model
+ *
+ * @category    Netgo
+ * @package     Netgo_Stripe
+ * @author      Afroz Alam <afroz92@gmail.com>
+ * @copyright   NetAttingo Technologies (http://www.netattingo.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 require_once(Mage::getBaseDir('lib') . '/Netgo/Stripe/lib/Stripe.php');
 class Netgo_Stripe_Model_Stripe extends Mage_Payment_Model_Method_Cc
 {
      
-    protected $_code = 'stripe';
+    protected $_code = 'netgo_stripe';
 	protected $_formBlockType = 'stripe/payment_form'; 
 	
 	 /**

@@ -1,8 +1,12 @@
 <?php
  /**
- * @package    Netgo_Stripe
- * @author     afroz alam(afroz92@gmail.com) 
- * @date       16/08/2015
+ * Netgo_Stripe module helper
+ *
+ * @category    Netgo
+ * @package     Netgo_Stripe
+ * @author      Afroz Alam <afroz92@gmail.com>
+ * @copyright   NetAttingo Technologies (http://www.netattingo.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Netgo_Stripe_Helper_Data extends Mage_Core_Helper_Abstract
 {
